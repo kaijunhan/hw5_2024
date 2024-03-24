@@ -1,8 +1,199 @@
-body{
-    font-family: "Poppins", sans-serif;
-    background-image: url("/images/concrete_seamless.png");
+/* Logo animation indicating lower and upper bounds for logo size*/
+@keyframes logoGrow {
+    from {
+        width: 25px;
+        opacity: 0;
+    }
+
+    to {
+        width: 475px;
+        opacity: 1;
+    }
 }
 
+#logo {
+    animation: logoGrow 5s forwards;
+}
+
+/* setting the font family and background graphics */
+body {
+    font-family: 'Poppins', serif;
+    background-image: url('images/concrete_seamless.png');
+    background-color: #f1f1f1;
+    /* Backup color */
+}
+
+/* setting the header as a flexbox */
 header{
     display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.nav_links {
+    display: flex;
+    list-style: none;
+    /* Removes default list styling */
+}
+
+/* ensures that nav links are same color before and after visiting */
+.nav_links a,
+.nav_links a:visited {
+    color: blue;
+    /* Example color, adjust as needed */
+}
+
+/* rounds the top */
+.card>header {
+    background: #288088;
+    border: 2px solid #45ADAD;
+    padding: 20px 0;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+/* works with previous css to round the top border */
+.card {
+    display: flex;
+    flex-basis: 450px;
+    flex-direction: column;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    /* Assuming you want a vertical layout */
+}
+
+.pricing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Allows cards to wrap on smaller screens */
+}
+
+.gallery img {
+    border: 10px solid #50C7C7;
+    margin: 10px;
+    width: 300px;
+    /* Sets the width of the images */
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    /* Allows images to wrap to the next line */
+    justify-content: center;
+    /* Centers the images within the container */
+}   
+
+/* FOR 900PX AND ABOVE */
+
+@media (min-width: 900px) {
+
+    /* Styles for header and nav_links */
+    body>header:not(main header) {
+        display: flex;
+        justify-content: space-between;
+        position: sticky;
+        width: 100%;
+        top: 0; 
+        /* ensures that the nav bar sticks to the top of the screen */
+    }
+
+    .nav_links {
+        justify-content: flex-end;
+    }
+    /* spaces nav links evenly */
+
+    /* Pricing and card adjustments */
+    .pricing,
+    .card {
+        flex: 1 0 275px;
+    }
+
+}
+
+/* Handling prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    #logo {
+        animation: none;
+        width: 475px;
+        /* Set to the final state width */
+        opacity: 1;
+        /* Set to the final state opacity */
+    }
+}
+
+
+@media print {
+
+    /* Change the font for body */
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background-image: none;
+        /* Removes background image */
+    }
+
+    header {
+        display: flex;
+        flex-direction: column;
+        /* Aligns children (logo and nav) in a column */
+    }
+
+    header img {
+        /* Assuming you want the logo to take the full width of its row */
+        width: 100%;
+        /* Adjust this as necessary */
+        align-self: center;
+        /* Center the logo if it's not full width */
+    }
+
+    header nav {
+        width: 100%;
+        /* Ensures nav takes the full width available */
+        display: flex;
+        /* Makes the nav itself a flex container */
+        justify-content: center;
+        /* Centers the nav links */
+    }
+
+    .nav_links {
+        justify-content: space-evenly;
+        /* Evenly spaces the nav items across the nav's width */
+        width: 100%;
+        /* Ensures nav_links element takes the full width of its parent (nav) */
+        list-style-type: none;
+        /* Removes default list styling */
+    }
+
+   
+
+    /* Adjust the pricing class for bottom alignment */
+    .pricing {
+        display: flex;
+        align-items: flex-end;
+        /* Aligns items along the bottom */
+        flex-wrap: nowrap;
+        /* Prevents the items from wrapping to a new line */
+    }
+
+    /* Style adjustments for card elements */
+    .card {
+        border: 2px solid #45ADDD;
+        flex-basis: 325px;
+    }
+
+    /* Hide the gallery */
+    .gallery, #gallery {
+        display: none;
+    }
+
+    /* Add the thumbs-up entity to card items */
+    .card>ul>li:nth-child(2)::after {
+        content: "\1F44D";
+        /* Unicode for thumbs up emoji */
+        /* Additional styling for thumbs up */
+        display: inline;
+        font-size: 24px;
+        color: black;
+    }
 }
