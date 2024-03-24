@@ -62,10 +62,12 @@ header{
     /* Assuming you want a vertical layout */
 }
 
+
 .pricing {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
     flex-wrap: wrap;
     /* Allows cards to wrap on smaller screens */
 }
@@ -105,9 +107,8 @@ header{
     /* spaces nav links evenly */
 
     /* Pricing and card adjustments */
-    .pricing,
     .card {
-        flex: 1 0 275px;
+        flex-basis: 275px;
     }
 
 }
