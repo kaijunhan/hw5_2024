@@ -125,7 +125,7 @@ header{
 }
 
 
-@media print {
+@media print and (orientation:portrait) {
 
     /* Change the font for body */
     body {
